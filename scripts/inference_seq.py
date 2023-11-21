@@ -14,7 +14,11 @@ from torch.nn import functional as F
 from sklearn.metrics import roc_auc_score, average_precision_score
 import warnings
 warnings.filterwarnings("ignore")
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+#device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+if torch.cuda.is_available():
+	device = torch.device("cuda")
+else:
+	device = torch.device("cpu")
 
 
 class BdTrainerSystem(pl.LightningModule):
