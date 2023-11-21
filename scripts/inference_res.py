@@ -302,7 +302,7 @@ class PdbPredictor:
                 model_type = self.data_mode['model_type']
             ), lr=0.1, weight_decay=0.1, model=deepcopy(base_model))
 
-        model.load_state_dict(torch.load(pdb_model_path, map_location=torch.device('cpu'))['state_dict'])
+        model.load_state_dict(torch.load(pdb_model_path,map_location='cpu')['state_dict'])
         n_para = np.sum([a.numel() for a in model.parameters()])
         print('Number of paramters', n_para)
         return model, tokenizer
